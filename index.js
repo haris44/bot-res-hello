@@ -1,6 +1,6 @@
 const connexion = require('./rabbit')
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/message', { useMongoClient: true, promiseLibrary: global.Promise });
+mongoose.connect('mongodb://' + process.env.MONGO_URL + '/message', { useMongoClient: true, promiseLibrary: global.Promise });
 const Message = mongoose.model('Message', { content: String })
 
 connexion().then(element => {
